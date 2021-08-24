@@ -1,0 +1,9 @@
+sample_id	species	fastq_r1	fastq_r2	strand
+F1	PbergheiANKA	F1_21725_8_4_1.fastq.gz	F1_21725_8_4_2.fastq.gz	RF
+F2	PbergheiANKA	F2_21725_8_5_1.fastq.gz	F2_21725_8_5_2.fastq.gz	RF
+M1	PbergheiANKA	M1_21725_8_1_1.fastq.gz	M1_21725_8_1_2.fastq.gz	RF
+M2	PbergheiANKA	M2_21725_8_2_1.fastq.gz	M2_21725_8_2_2.fastq.gz	RF
+#wt1	TgondiiGT1	test/s1_R1.fq.gz	test/s1_R2.fq.gz	RF
+#wt2	TgondiiGT1	test/s2_R1.fq.gz	test/s2_R2.fq.gz	RF
+#mu1	TgondiiGT1	test/s3_R1.fq.gz	test/s3_R2.fq.gz	RF
+#mu2	TgondiiGT1	test/s4_R1.fq.gz	test/s4_R2.fq.gz	RF

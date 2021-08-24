@@ -1,0 +1,3 @@
+species	fasta	gff
+TgondiiGT1	https://toxodb.org/common/downloads/release-53/TgondiiGT1/fasta/data/ToxoDB-53_TgondiiGT1_Genome.fasta	https://toxodb.org/common/downloads/release-53/TgondiiGT1/gff/data/ToxoDB-53_TgondiiGT1.gff
+PbergheiANKA	https://plasmodb.org/common/downloads/release-53/PbergheiANKA/fasta/data/PlasmoDB-53_PbergheiANKA_Genome.fasta	https://plasmodb.org/common/downloads/release-53/PbergheiANKA/gff/data/PlasmoDB-53_PbergheiANKA.gff
