@@ -354,6 +354,9 @@ rule differential_junctions:
         cnt= '{species}/edger/junction_counts.tsv.gz',
     output:
         bed= temp('{species}/edger/differential_junctions.{contrast}.bed.gz'),
+    params:
+        min_count= config['min_count'],
+        min_pct_pass= config['min_pct_pass'],
     shell:
         r"""
 cat <<'EOF' > {rule}.$$.tmp.R
@@ -382,9 +385,9 @@ cnt <- merge(cnt, contrasts[, list(sample_id, side)], by= 'sample_id', sort= FAL
 # Filter sites with low counts. We are not intersted in differential
 # expression so want a decent number of counts in both lhs and rhs
 tot <- cnt[, list(count= sum(count)), by= list(sample_id, jx_id, side)]
-tot <- tot[, list(n_libs= .N, n_libs_pass= sum(count > 30)), by= list(jx_id, side)]
+tot <- tot[, list(n_libs= .N, n_libs_pass= sum(count > {params.min_count})), by= list(jx_id, side)]
 tot[, pct := n_libs_pass/n_libs]
-keep <- tot[, list(n_cmp_pass= sum(pct >= 0.75)), by= jx_id][n_cmp_pass >= 2]
+keep <- tot[, list(n_cmp_pass= sum(pct >= {params.min_pct_pass})), by= jx_id][n_cmp_pass >= 2]
 cnt <- cnt[jx_id %in% keep$jx_id]
 
 cat(sprintf('%s %s\n', '{wildcards.contrast}', length(unique(cnt$jx_id))))

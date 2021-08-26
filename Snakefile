@@ -1,5 +1,7 @@
 import pandas
 
+STRAND = ['forward', 'reverse']
+
 def get_fastq(wc):
     fq = [ssfq[ssfq.fastq_base == wc.fastq_base].fastq_r1.iloc[0]]
     if not ssfq[ssfq.fastq_base == wc.fastq_base].fastq_r2.isna().values.any():
@@ -19,8 +21,6 @@ for fq in ['fastq_r1', 'fastq_r2']:
 ssfq['fastq_base'] = [re.sub('\.fastq\.gz$|\.fq.\.gz', '', os.path.basename(x)) for x in ssfq.fastq_r1]
 assert len(ssfq.fastq_base) == len(set(ssfq.fastq_base))
 
-STRAND = ['forward', 'reverse']
-
 wildcard_constraints:
     sample= '|'.join([re.escape(x) for x in ss.sample_id]),
     fastq_base= '|'.join([re.escape(x) for x in ssfq.fastq_base]),
@@ -34,7 +34,6 @@ rule all:
         expand('{species}/bigwig/{sample}.reverse.bw', zip, species= ss.species, sample= ss.sample_id),
         expand('{species}/edger/junction_counts.tsv.gz', species= ss.species),
         expand('{species}/edger/differential_junctions.tsv.gz', species= ss.species),
-        # expand('{species}/hisat2/counts.summary', species= ss.species),
 
 
 include: 'workflows/prep_ref.smk'
