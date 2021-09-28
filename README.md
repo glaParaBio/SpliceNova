@@ -9,14 +9,14 @@
 
 ## Set up environment
 
-Assuming you have conda installed and configured for
-[bioconda](https://bioconda.github.io/user/install.html) and you also have
-[mamba](https://github.com/mamba-org/mamba) also installed. Create a dedicated
-environment and install dependencies:
+Assuming you have conda installed and you also have
+[mamba](https://github.com/mamba-org/mamba) installed (*e.g.* with `conda
+install mamba -n base -c conda-forge`). Create a dedicated environment and
+install dependencies:
 
 ```
 conda create --yes -n diffsplice
-mamba install --freeze-installed -n diffsplice --yes --file requirements.txt
+mamba install -c conda-forge -c bioconda --freeze-installed -n diffsplice --yes --file requirements.txt
 ```
 
 The name of the environment here is `diffsplice` but any name you like will do.
