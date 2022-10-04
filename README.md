@@ -1,11 +1,34 @@
 <!-- vim-markdown-toc GFM -->
 
+* [Description](#description)
 * [Set up environment](#set-up-environment)
 * [Run pipeline](#run-pipeline)
     * [Relevant arguments](#relevant-arguments)
 * [Output](#output)
 
 <!-- vim-markdown-toc -->
+
+## Description
+
+This workflow uses RNAseq data to identify *de novo* splicing sites, *i.e.*
+splicing that may or may not correspond to known transcripts. `featureCounts`
+is the workhorse behind this step. Then we the strategy for differential
+methylation from [Chen *et al.*
+2017](https://f1000research.com/articles/6-2055/v2) to assess differential
+splicing across conditions.
+
+Here's an example of differential splicing. The reference annotation reports
+only the "Female" variant of the first exons. However, "Ookinetes" appear to
+have this exon truncated early.
+
+![alt text](misc/diffsplice_example.png "Differential splicing example")
+
+Note that this is different from differential transcript or differential exons
+usage (as in *e.g.* the `DEXseq` method) in that we do not know beforehand where
+splicing sites are. `De novo` transcript assembly using e.g.  `stringtie` is an
+attractive option. However, stringtie performed very poorly in our hands in
+*Plasmodium sp.* and de novo transcript assembly is not really what we want.
+
 
 ## Set up environment
 
