@@ -1,5 +1,5 @@
 python >=3.6
-snakemake >=6.8.0
+snakemake >=7.15.2
 samtools =1.9
 r-data.table =1.12.0
 fastqc =0.11.8
