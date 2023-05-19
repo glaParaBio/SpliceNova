@@ -39,7 +39,7 @@ install dependencies:
 
 ```
 conda create --yes -n diffsplice
-mamba install -c conda-forge -c bioconda --freeze-installed -n diffsplice --yes --file requirements.txt
+mamba install -c conda-forge -c bioconda -n diffsplice --yes --file requirements.txt
 ```
 
 The name of the environment here is `diffsplice` but any name you like will do.
