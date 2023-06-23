@@ -115,9 +115,13 @@ rule bigwig:
 
 base_fq= {}
 for i, row in ssfq.iterrows():
-    base_fq[os.path.basename(re.sub('\.fastq\.gz$|\.fq\.gz$', '', row['fastq_r1']))]= row['fastq_r1']
+    key = os.path.basename(re.sub('\.gz$', '', row['fastq_r1']))
+    key = re.sub('\.fastq$|\.gz$', '', key)
+    base_fq[key] = row['fastq_r1']
     if not pandas.isna(row['fastq_r2']):
-        base_fq[os.path.basename(re.sub('\.fastq\.gz$|\.fq\.gz$', '', row['fastq_r2']))]= row['fastq_r2']
+        key = os.path.basename(re.sub('\.gz$', '', row['fastq_r2']))
+        key = re.sub('\.fastq$|\.gz$', '', key)
+        base_fq[key] = row['fastq_r2']
 
 rule fastqc:
     priority: -10

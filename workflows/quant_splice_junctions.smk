@@ -371,6 +371,13 @@ contrasts <- contrasts[species == '{wildcards.species}' & contrast == '{wildcard
 contrasts[, species := NULL]
 contrasts[, contrast := NULL]
 
+if('lhs' %in% contrasts$side == FALSE) {{
+    stop("The `contrasts` table does not contain a left-hand-side (lhs) term")
+}}
+if('rhs' %in% contrasts$side == FALSE) {{
+    stop("The `contrasts` table does not contain a right-hand-side (rhs) term")
+}}
+
 cnt <- fread('{input.cnt}')
 cnt <- melt(data= cnt, id.vars= c('sample_id', 'gene_id', 'chrom', 'jx_start', 'jx_end'), variable.name= 'jx_type', value.name= 'count')
 
