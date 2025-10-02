@@ -5,6 +5,8 @@
 * [Run pipeline](#run-pipeline)
     * [Relevant arguments](#relevant-arguments)
 * [Output](#output)
+* [Notes/TODO](#notestodo)
+    * [02/09/2025 - featureCounts update](#02092025---featurecounts-update)
 
 <!-- vim-markdown-toc -->
 
@@ -178,4 +180,18 @@ The most relevant output is under `<species>/edger`.
 
 Other output files should be self-explanatory (e.g. bigWig, BAM)
 
+## Notes/TODO
 
+### 02/09/2025 - featureCounts update
+
+[featureCounts](https://subread.sourceforge.net/) has changed quite a bit from
+v2.0.1 to v2.1.1 so this pipeline will not work with newer versions. From a
+quick exploration, v2.0.1 and v2.1.1 give the same or similar results as far as
+this pipeline is concerned, but the various changes break the code. An
+(incomplete?) list of what needs to be updated:
+
+* For paired-end input add `--countReadPairs` to commands
+
+* Add `transcript_id` attribute to reference GFF using `scripts/addTranscriptId.py`
+
+* The `<output-name>.jcounts` file has changed format
