@@ -34,11 +34,15 @@ attractive option. However, stringtie performed very poorly in our hands in
 
 ![alt text](misc/diffsplice_figure.png "Differential splicing example")
 
-Outline of the differential splicing analysis: **A)** Testable splice junctions are genomic intervals flanked by the canonical GT/AG sites; these junctions may or may not correspond to
-reference introns, but they must overlap reference genes. **B)** RNAseq reads split across junctions (purple) support splicing while reads straddled across junctions support intron
-retention (green); reads fully contained in introns, exons or intergenic regions are ignored. **C)** For each junction and for each library, compile a table of counts supporting splicing
-and intron retention. **D)** Differential splicing occurs when the difference between split and non-split counts is different between conditions (e.g. left and right plot, the plot on the
-left also has evidence of differential expression); the plot in the middle has evidence of differential expression but not of differential splicing.
+Outline of the differential splicing analysis: **A)** Testable splice junctions
+are genomic intervals flanked by the canonical GT/AG sites; these junctions may
+or may not correspond to reference introns, but they must overlap reference
+genes. **B)** RNAseq reads split across junctions (purple) support splicing
+while reads straddled across junctions support intron retention (green); reads
+fully contained in introns, exons or intergenic regions are ignored. **C)** For
+each junction and for each library, compile a table of counts supporting
+splicing and intron retention. **D)** Differential splicing occurs when the
+difference between split and non-split counts is different between conditions.
 
 ## Set up environment
 
