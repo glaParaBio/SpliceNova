@@ -1,0 +1,45 @@
+name: Test pipeline
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v3
+
+    - name: Setup Miniconda
+      uses: conda-incubator/setup-miniconda@v2
+      with:
+        auto-update-conda: true
+        miniforge-variant: Miniforge3
+        channels: conda-forge,bioconda,defaults
+        activate-environment: splicenova
+        use-mamba: false
+
+    - name: Create and Install Conda Environment
+      shell: bash -l {0}
+      run: |
+        conda create --yes -n splicenova
+        conda activate splicenova
+        conda install -n splicenova --yes --file requirements.txt
+
+    - name: Dry Run Pipeline
+      shell: bash -l {0}
+      run: |
+        conda activate splicenova
+        snakemake -p --jobs 1 \
+            --config fastqdir=$PWD/test \
+                     sample_sheet=$PWD/sample_sheet.tsv \
+                     species=$PWD/species.tsv \
+                     contrasts=$PWD/contrasts.tsv \
+                     max_intron_len=5000 \
+                     min_count=0 \
+                     min_pct_pass=0 \
+            --directory output

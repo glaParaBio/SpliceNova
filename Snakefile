@@ -29,11 +29,11 @@ wildcard_constraints:
 
 rule all:
     input:
-        'multiqc/fastqc_report.html',
         expand('{species}/bigwig/{sample}.forward.bw', zip, species= ss.species, sample= ss.sample_id),
         expand('{species}/bigwig/{sample}.reverse.bw', zip, species= ss.species, sample= ss.sample_id),
         expand('{species}/edger/junction_counts.tsv.gz', species= ss.species),
         expand('{species}/edger/differential_junctions.tsv.gz', species= ss.species),
+        # 'multiqc/fastqc_report.html',
 
 
 include: 'workflows/prep_ref.smk'

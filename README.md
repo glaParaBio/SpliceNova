@@ -52,18 +52,18 @@ install mamba -n base -c conda-forge`). Create a dedicated environment and
 install dependencies:
 
 ```
-conda create --yes -n diffsplice
-mamba install -c conda-forge -c bioconda -n diffsplice --yes --file requirements.txt
+conda create --yes -n splicenova
+conda install -c conda-forge -c bioconda -n splicenova --yes --file requirements.txt
 ```
 
-The name of the environment here is `diffsplice` but any name you like will do.
+The name of the environment here is `splicenova` but any name you like will do.
 
 ## Run pipeline
 
 Unless you have already done so, activate the environment:
 
 ```
-conda activate diffsplice
+conda activate splicenova
 ```
 
 Run pipeline:
